@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Newsletter Form - StablePay</title>
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Newsletter Form -->
+  <form action="https://formspree.io/f/xanenbna" method="post" data-aos="fade-up" data-aos-delay="500">
+    <!-- Add a hidden _next field if you want to redirect to #newsletter-thanks -->
+    <input type="hidden" name="_next" value="https://stablepay.finance/index.html#newsletter-thanks" />
+
+    <div class="newsletter-form">
+      <input type="email" name="email" placeholder="Enter your email..." required>
+      <input type="submit" value="Subscribe">
+    </div>
+    <div class="loading">Loading</div>
+    <div class="error-message"></div>
+    <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+  </form>
+
+  <!-- Script to hide "Loading" and "Thank you" message on reload -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Always hide the "Loading" text on page load
+      const loadingEl = document.querySelector('.loading');
+      if (loadingEl) {
+        loadingEl.style.display = 'none';
+      }
+
+      // Always hide the "Thank you" message on page load
+      const sentMsg = document.querySelector('.sent-message');
+      if (sentMsg) {
+        sentMsg.style.display = 'none';
+      }
+
+      // If the URL hash is #newsletter-thanks, show the message once
+      if (window.location.hash === '#newsletter-thanks') {
+        if (sentMsg) {
+          sentMsg.style.display = 'block';
+        }
+        // Remove the hash so it won't persist if user reloads
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contact Form - StablePay</title>
+
+  <!-- Same Vendor CSS as in index.html -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Override the .section padding for this iframe page -->
+  <style>
+    /* Remove default .section 60px top/bottom padding */
+    .section {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  </style>
+</head>
+<body style="background-color: transparent;">
+
+  <!-- Section with no extra top/bottom padding -->
+  <section class="section" data-aos="fade-up" data-aos-delay="100" style="padding: 0;">
+    <div class="container" style="padding: 0;">
+      <!-- Anchor for post-submission if using _next -->
+      <div id="form-thanks"></div>
+
+      <!-- Contact Form -->
+      <form 
+        action="https://formspree.io/f/xldjdlev" 
+        method="post" 
+        data-aos="fade-up" 
+        data-aos-delay="200"
+      >
+        <!-- If you want a custom redirect anchor -->
+        <input type="hidden" name="_next" value="https://stablepay.finance/index.html#form-thanks" />
+
+        <div class="row gy-4">
+          <div class="col-md-6">
+            <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+          </div>
+          <div class="col-md-6">
+            <input type="email" name="email" class="form-control" placeholder="Your Email" required="">
+          </div>
+          <div class="col-md-12">
+            <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+          </div>
+          <div class="col-md-12">
+            <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
+          </div>
+          <div class="col-md-12 text-center">
+            <!-- Loading, error, and success messages -->
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-stablepay">Send Message</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Same Vendor JS as in index.html (optional if you want AOS, etc.) -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Always hide the "Loading" text on page load
+      const loadingEl = document.querySelector('.loading');
+      if (loadingEl) {
+        loadingEl.style.display = 'none';
+      }
+  
+      if (window.location.hash === '#form-thanks') {
+        // Keep the success message visible for the first load,
+        // but remove the hash so it won't persist if user reloads
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      } else {
+        // Hide the success message if we're not on #form-thanks
+        const sentMsg = document.querySelector('.sent-message');
+        if (sentMsg) {
+          sentMsg.style.display = 'none';
+        }
+      }
+    });
+  </script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

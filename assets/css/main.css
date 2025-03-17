@@ -1711,6 +1711,16 @@ section,
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
+.btn-stablepay {
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.btn-stablepay:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
 .contact .info-item {
   background-color: var(--surface-color);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
